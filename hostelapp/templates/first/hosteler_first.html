@@ -1,0 +1,36 @@
+{% extends 'extends/basic.html' %}
+{% block body %}
+<div class="container my-5" align="center" >
+    <div class="my-5 .z-depth-3" style="border:1px solid;background-color:#F5F4EC;">
+        <form method="post" action="/hosteler/hosteler_details/">{% csrf_token %}
+            <table width="50%" align="center"  cellspacing="20" cellpadding="20">
+                <tr>
+                    <td>Hostel Name</td>
+                    <td><input type="text" readonly value="{{hostel_name}}"></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" name="first_name"></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" name="last_name"></td>
+                </tr>
+                <tr>
+                    <td>Mobile Number</td>
+                    <td><input type="number" name="mobile_no"></td>
+                </tr>
+                <tr>
+                    <td>Addhar Number</td>
+                    <td><input type="number" name="addhar_no"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{% endblock %}

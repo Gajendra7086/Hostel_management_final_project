@@ -1,0 +1,23 @@
+{% extends 'extends/hostel_admin_extends.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="mt-5" align="center"><h2>ALL HOSTLERS</h2></div>
+    <table border="1" class="mt-2 w-100">
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Mobile Number</td>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{i.first_name|title}}</td>
+            <td>{{i.last_name|title}}</td>
+            <td>{{i.username}}</td>
+            <td>{{i.mobile_no}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'extends/hostler_extends.html' %}
+{% block content %}
+<div class="container mt-5" align="center">
+    <table class="mt-5 w-75" border="1">
+        <tr>
+            <td>Receipt Number</td>
+            <td>Date</td>
+            <td>Month</td>
+            <td>Amount</td>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{i.slip_no}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.month_year}}</td>
+            <td>{{i.amount}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

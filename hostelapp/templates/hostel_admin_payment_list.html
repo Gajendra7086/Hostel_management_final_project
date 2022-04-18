@@ -1,0 +1,24 @@
+{% extends 'extends/hostel_admin_extends.html' %}
+{% block content %}
+<div class="mt-5 container w-75" align="center">
+    <div class="mt-3"><h2>All Payments</h2></div>
+    <table class="mt-3 w-75">
+        <tr>
+            <td>Receipt Number</td>
+            <td>Name</td>
+            <td>Date</td>
+            <td>year - month</td>
+            <td>Amount</td>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{i.slip_no}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.month_year}}</td>
+            <td>{{i.amount}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

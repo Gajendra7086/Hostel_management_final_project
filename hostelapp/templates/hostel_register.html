@@ -1,0 +1,103 @@
+{% extends 'extends/basic.html' %}
+{% block body%}
+{% load widget_tweaks %}
+{% load static %}
+<script src="{% static 'js/hostel_creatation.js' %}"></script>
+<style>
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#id_address{
+height:100px;
+width:80%;
+}
+
+</style>
+<div class="vertical-center text-center w-100">
+    <div class="container w-50" style="background-color:rgba(0,0,0,.2)">
+        <form action="/hostel_register/" id="hostelCreation" method="post" autocomplete="off">{% csrf_token %}
+            <h1 class="text-center">
+                Hostel Registration
+            </h1>
+            <div id="page1">
+                <table class="table">
+                    <tr>
+                        <td>First Name</td>
+                        <td>{{ userform.first_name}}</td>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>{{ userform.last_name }}<br></td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Number<br>
+                            <span id="mobile_text"></span></td>
+                        <td>{{ userform.mobile_no|attr:"oninput=mobileNumber()"}}</td>
+                    </tr>
+                    <tr>
+                        <td>Hostel Name<br>
+                            <span id="hostelName-text"></span></td>
+                        <td>
+                            {{userform.hostel_name|attr:"oninput=hostelNameChecker(this.value)"|attr:"onkeyup=this.value=this.value.toUpperCase()"}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <a class="material-tooltip-main" data-toggle="tooltip"
+                               title="Next" onclick="nextPage()">
+                                <font size="12">&#9654;</font>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="page2" hidden>
+                <table class="table">
+                    <tr>
+                        <td>Email<br>
+                            <span id="email-text" class="red-text"></span></td>
+                        <td>{{userform.username|attr:"onkeyup=this.value=this.value.toUpperCase()"}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" id="otpGen" onclick="otpGenerator()">Generate Otp</button>
+                            <input type="text" id="otp" hidden placeholder="Otp" style="width:130px;">
+                        </td>
+                        <td>
+                            <button type="button" id="valid-btn" onclick="otpValidator()" hidden>Validate</button>
+                            <button type="button" id="resend-btn" onclick="otpGenerator()" hidden>Resend Otp</button>
+                            <span id="resend-text"> </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>{{ userform.password|attr:"type=password" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password</td>
+                        <td><input type="password" id="confirm_pass" oninput="matchingOfPassword()"><br>
+                            <span id="password_text" class="red-text"></span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font size="12">
+                                <a class="material-tooltip-main" data-toggle="tooltip"
+                                   title="Next" onclick="previousPage()">&#9664;
+                                </a>
+                            </font>
+                        </td>
+                        <td>
+                            {{userform.is_warden_owner|attr:"hidden"|attr:"checked"}}
+                            <button class="btn blue-gradient" type="button" onclick="submitForm()">Submit</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}

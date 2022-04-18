@@ -1,0 +1,22 @@
+{% extends 'extends/hostler_extends.html' %}
+{% block content%}
+<div class="container my-5 w-50">
+    <div class="my-5">
+        <form action="/hostler/complain/" method="post">{% csrf_token %}
+            <div class="md-form ">
+                <i class="fas fa-user prefix"></i>
+                <input type="text" name="subject" id="subject" class="form-control" style="height:70px;" required>
+                <label for="subject">Subject</label>
+            </div>
+            <div class="md-form mt-3">
+                <i class="fas fa-user prefix"></i>
+                <textarea name="message" id="message" class="form-control md-textarea" style="height:200px;" required></textarea>
+                <label for="message">Message</label>
+            </div>
+            <div align="center" class="my-5">
+            <input type="submit" value="Register Complain" class="btn btn-info">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock%}

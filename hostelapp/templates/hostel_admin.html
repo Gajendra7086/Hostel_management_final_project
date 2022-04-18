@@ -1,0 +1,42 @@
+{% extends 'extends/hostel_admin_extends.html' %}
+{% block content %}
+<div class="container mt-5 w-100" align="center">
+    <div class="row">
+        <div class="col-md-5 mt-5 offset-1 z-depth-3" style="background:#5CF7E7;">
+            <div class="my-5">
+                <a href="/hostel_admin/complain/">COMPLAINS</a>
+            </div>
+        </div>
+        <div class="col-md-5 mt-5 offset-1 z-depth-3"" style="background:#5CF7E7;">
+            <div class="my-5">
+                HOSTLER
+                <ul>
+                    <li>
+                        <a href="" data-toggle="modal"
+                           data-target="#add_hostler">Add&nbsp;Hostler</a>
+                    </li>
+                    <li>
+                        <a href="/hostel_admin/verify_hostlers_page/">Verify&nbsp;Hostler</a>
+                    </li>
+                    <li>
+                        <a href="/hostel_admin/all_hostler/">All&nbsp;Hostler</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mt-5 offset-1 z-depth-3" style="background:#5CF7E7;">
+            <div class="my-5">
+                <a class="nav-link" href="/hostel_admin/payment/">PAYMENTS</a>
+                <a href="/hostel_admin/payment_list/">All PAYMENTS</a>
+            </div>
+        </div>
+        <div class="col-md-5 mt-5 offset-1 z-depth-3" style="background:#5CF7E7;">
+            <div class="my-5">
+                <a class="nav-link" href="/hostel_admin/remove_hostler/">REMOVE&nbsp;HOSTLER</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

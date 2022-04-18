@@ -1,0 +1,66 @@
+{% extends 'extends/basic.html' %}
+{% load static %}
+{% load widget_tweaks%}
+{% block style %}
+<style>
+body,html{
+    height:100%;}
+    .vertical-center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+
+</style>
+{% endblock %}
+{% block body %}
+<div style="background-image:url({% static 'images/hostel2.jpg' %}); height:100%;background-position: center;background-size: cover;">
+    <div style="background-color:rgba(0,0,0,0.5);height:100%;">
+        <div class="white-text" align="center" style="font-size:40px;background-color:rgba(0,0,0,0.8);">
+            <b>ONLINE HOSTEL MANAGEMENT</b>
+        </div>
+        <div style="height:30%;"></div>
+        <div class="row mx-5">
+            <div class="container col-md-3 " align="center"
+                 style="background-color:rgba(0,0,0,0.5);padding-top:20px;padding-bottom:50px;">
+                <div class="white-text my-2" style="font-size:25px;">
+                    <b>SIGN IN</b></div>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    {% if message.tags %}
+                    <li class="red-text">{{ message }}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form method="post" action="/login_details/" autocomplete="off">{% csrf_token %}
+                    <div class="md-form ">
+                        <i class="fas fa-user prefix"></i>
+                        {{form.username|add_class:"form-control"|attr:"onkeyup=this.value=this.value.toUpperCase()"}}
+                        <label for="id_username" class="white-text">E-mail address</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fas fa-user prefix"></i>
+                        {{form.password|add_class:"form-control"}}
+                        <label for="id_password" class="white-text">Password</label>
+                    </div>
+                    <div class="white-text"><a href="" data-toggle="modal" data-target="#forgot_password">Forgot Password</a></div>
+                    <input type="submit" class="btn btn-light" value="log-in">
+                </form>
+            </div>
+            <div class="col-md-5">
+                <div style="width:70%;background-color:rgba(0,0,0,0.5);height:100%;">
+                    <a href="/hostel_register/" class="vertical-center white-text"
+                       style="font-size:25px;margin-left:60px;">
+                        REGISTER YOUR HOSTEL
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

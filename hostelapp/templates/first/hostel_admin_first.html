@@ -1,0 +1,33 @@
+{% extends 'extends/basic.html' %}
+{% block body %}
+<div class="container w-50 mt-5" align="center">
+    <div class="mt-5"><h2>Hostel Registration</h2></div>
+    <div class="mt-5 z-depth-3" style="background:#FAE5D3;">
+        <form method="post" action="/hostel_admin/hostel_details/">{% csrf_token %}
+            <table cellpadding="10" class="w-100 mt-5" align="center">
+                <tr>
+                    <td class="w-50">Hostel Name</td>
+                    <td>
+                        <input type="text" readonly value="{{hostel_name}}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address of Hostel</td>
+                    <td>
+                        <textarea name="hostel_address" style="width:250px;height:150px;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>No of Rooms</td>
+                    <td><input type="number" name="no_of_rooms"></td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <input type="submit" class="btn btn-light">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{% endblock %}

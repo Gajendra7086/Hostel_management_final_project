@@ -1,0 +1,22 @@
+{% extends 'extends/hostler_extends.html' %}
+{% block content %}
+<div class="container mt-5 w-50">
+    <div class="mt-5" align="center"><h2>Complain Status</h2></div>
+    <table class="w-100" border="1">
+        <tr>
+            <td>Date</td>
+            <td>Subject</td>
+            <td>Message</td>
+            <td>Status</td>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{i.date}}</td>
+            <td>{{i.subject}}</td>
+            <td>{{i.message}}</td>
+            <td>{{i.complain_status}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

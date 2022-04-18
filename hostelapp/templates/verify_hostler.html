@@ -1,0 +1,34 @@
+{% extends 'extends/hostel_admin_extends.html' %}
+{% block content %}
+<div class="container mt-5" align="center">
+    <h3>Verify Hostlers</h3>
+
+    <table border="1" width="90%;" class="mt-5">
+        <thead>
+        <tr>
+            <td class="text-center" style="font-weight:bold;">Name</td>
+            <td class="text-center" style="font-weight:bold;">Email</td>
+            <td class="text-center" style="font-weight:bold;"></td>
+            <td class="text-center" style="font-weight:bold;"></td>
+        </tr>
+        </thead>
+        <tbody align="center">
+        {% for i in details %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.email }}</td>
+            <td>
+                <form method="post" action="/hostel_admin/verify_hostler/{{i.id}}">{% csrf_token %}
+                    <input type="text" placeholder="Enter the code" name="code" required>
+                    <input type="submit" value="Validate">
+                </form>
+            </td>
+            <td>
+                <button type="button" onclick="window.location='/hostel_admin/delete_verify_hostler/{{i.id}}'">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}   
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'extends/hostel_admin_extends.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container mt-3 w-50">
+    <div align="right"><a href="/hostel_admin/payment_list/">All Payment</a></div>
+    <div align="center"><h2>Payment</h2></div>
+    <form action="/hostel_admin/payment/" method="post" autocomplete="off">{% csrf_token %}
+        <table cellpadding="5" align="center" class="table w-100">
+            <tr>
+                <td>Receipt no.</td>
+                <td><input type="number" value="{{slip_number}}" name="slip_no"></td>
+                <td>Date :</td>
+                <td><input type="date" name="date"></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <select style="width:100%;" name="name">
+                        <option value="">Name</option>
+                        {% for n in names %}
+                        <option value="{{n}}">{{n|title}}</option>
+                        {% endfor %}
+                    </select></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td><input type="number" name="amount"></td>
+                <td>Month and year</td>
+                <td><input type="month" name="month_year"></td>
+            </tr>
+            <tr>
+                <td>Remark</td>
+                <td colspan="3"><textarea name="remark" style="width:400px;"></textarea></td>
+            </tr>
+        </table>
+        <div align="center" class="mt-5">
+            <input type="submit" value="Save" class="btn morpheus-den-gradient white-text">
+        </div>
+    </form>
+</div>
+{% endblock %}
